@@ -9,12 +9,11 @@
 
 using namespace gl;
 
-static void glfw_error_callback(const int error, const char* description);
-static void glfw_key_callback(GLFWwindow* window, const int key, const int scancode, const int action, const int mods);
-static void glfw_framebuffer_size_callback(GLFWwindow* window, const int width, const int height);
+static void glfw_error_callback(const int error, const char *description);
+static void glfw_key_callback(GLFWwindow *window, const int key, const int scancode, const int action, const int mods);
+static void glfw_framebuffer_size_callback(GLFWwindow *window, const int width, const int height);
 
 int main(int argc, char *argv[]) {
-
 	/*
 	* Initialize GLFW and create a window
 	*/
@@ -22,12 +21,13 @@ int main(int argc, char *argv[]) {
 	if (!glfwInit()) {
 		exit(EXIT_FAILURE);
 	}
-	GLFWwindow* window = glfwCreateWindow(
+	GLFWwindow *window = glfwCreateWindow(
 		640, 480,							// width/height
 		fmt::format("EngineMk1 v{}.{}.{}",	// title 
 			EngineMk1_VERSION_MAJOR, 
 			EngineMk1_VERSION_MINOR, 
-			EngineMk1_VERSION_PATCH).c_str(), 
+			EngineMk1_VERSION_PATCH
+		).c_str(), 
 		NULL,								// windowed mode
 		NULL								// do not share context with another window
 	);
@@ -61,16 +61,16 @@ int main(int argc, char *argv[]) {
 	return 0;
 }
 
-static void glfw_error_callback(const int error, const char* description) {
+static void glfw_error_callback(const int error, const char *description) {
 	fmt::print(stderr, "GLFW ERROR: {}", description);
 }
 
-static void glfw_key_callback(GLFWwindow* window, const int key, const int scancode, const int action, const int mods) {
+static void glfw_key_callback(GLFWwindow *window, const int key, const int scancode, const int action, const int mods) {
 	if (key == GLFW_KEY_ESCAPE && action == GLFW_PRESS) {
-		glfwSetWindowShouldClose(window, std::underlying_type<GLboolean>::type(GL_TRUE));
+		glfwSetWindowShouldClose(window, true);
 	}
 }
 
-static void glfw_framebuffer_size_callback(GLFWwindow* window, const int width, const int height) {
+static void glfw_framebuffer_size_callback(GLFWwindow *window, const int width, const int height) {
 	glViewport(0, 0, width, height);
 }
