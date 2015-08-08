@@ -3,7 +3,8 @@ cmake_minimum_required (VERSION 3.3)
 project(EngineMk1)
 
 set (EngineMk1_VERSION_MAJOR 0)
-set (EngineMk1_VERSION_MINOR 1)
+set (EngineMk1_VERSION_MINOR 0)
+set (EngineMk1_VERSION_PATCH 1)
 
 configure_file (
  	"${PROJECT_SOURCE_DIR}/src/config.h.in"
@@ -15,6 +16,7 @@ include_directories(
 	${PROJECT_SOURCE_DIR}/extern/cppformat
 	${PROJECT_SOURCE_DIR}/extern/glfw/include
 	${PROJECT_SOURCE_DIR}/extern/glm
+	${PROJECT_SOURCE_DIR}/extern/glbinding/source/glbinding/include
 )
 
 # Compile GLFW
@@ -27,5 +29,10 @@ add_subdirectory (extern/glfw)
 # Compile cppformat
 add_subdirectory ("extern/cppformat")
 
+# Compile glbinding
+add_subdirectory ("extern/glbinding")
+
+add_definitions(-DGLFW_INCLUDE_NONE)
+
 add_executable(EngineMk1 "src/main.cxx")
-target_link_libraries (EngineMk1 cppformat glfw ${GLFW_LIBRARIES})
+target_link_libraries (EngineMk1 cppformat glfw ${GLFW_LIBRARIES} glbinding)
