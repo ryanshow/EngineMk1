@@ -13,10 +13,18 @@ configure_file (
 include_directories(
 	"${PROJECT_BINARY_DIR}"
 	"${PROJECT_SOURCE_DIR}/extern/cppformat"
+	"${PROJECT_SOURCE_DIR}/extern/glfw/include"
 )
 
-# Libraries we'd like to include...
+# Compile GLFW
+SET(GLFW_BUILD_EXAMPLES OFF CACHE BOOL "Build the GLFW example programs")
+SET(GLFW_BUILD_TESTS OFF CACHE BOOL "Build the GLFW test programs")
+SET(GLFW_BUILD_DOCS OFF CACHE BOOL "Build the GLFW documentation")
+SET(GLFW_INSTALL OFF CACHE BOOL "Generate installation target")
+add_subdirectory (extern/glfw)
+
+# Compile cppformat
 add_subdirectory ("extern/cppformat")
 
 add_executable(EngineMk1 "src/main.cxx")
-target_link_libraries (EngineMk1 cppformat)
+target_link_libraries (EngineMk1 cppformat glfw ${GLFW_LIBRARIES})
