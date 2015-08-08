@@ -6,14 +6,15 @@ set (EngineMk1_VERSION_MAJOR 0)
 set (EngineMk1_VERSION_MINOR 1)
 
 configure_file (
- 	"${PROJECT_SOURCE_DIR}/config.h.in"
+ 	"${PROJECT_SOURCE_DIR}/src/config.h.in"
  	"${PROJECT_BINARY_DIR}/config.h"
 )
 
 include_directories(
-	"${PROJECT_BINARY_DIR}"
-	"${PROJECT_SOURCE_DIR}/extern/cppformat"
-	"${PROJECT_SOURCE_DIR}/extern/glfw/include"
+	${PROJECT_BINARY_DIR}
+	${PROJECT_SOURCE_DIR}/extern/cppformat
+	${PROJECT_SOURCE_DIR}/extern/glfw/include
+	${PROJECT_SOURCE_DIR}/extern/glm
 )
 
 # Compile GLFW
