@@ -1,0 +1,2 @@
+#define EngineMk1_VERSION_MAJOR @EngineMk1_VERSION_MAJOR@
+#define EngineMk1_VERSION_MINOR @EngineMk1_VERSION_MINOR@
