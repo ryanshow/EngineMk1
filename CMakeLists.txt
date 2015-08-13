@@ -36,3 +36,5 @@ add_definitions(-DGLFW_INCLUDE_NONE)
 
 add_executable(EngineMk1 "src/main.cxx")
 target_link_libraries (EngineMk1 cppformat glfw ${GLFW_LIBRARIES} glbinding)
+
+target_compile_features(EngineMk1 PRIVATE cxx_enum_forward_declarations)
