@@ -1,4 +1,4 @@
-cmake_minimum_required (VERSION 3.3)
+cmake_minimum_required (VERSION 3.2)
 
 project(EngineMk1)
 
@@ -17,6 +17,7 @@ include_directories(
 	${PROJECT_SOURCE_DIR}/extern/glfw/include
 	${PROJECT_SOURCE_DIR}/extern/glm
 	${PROJECT_SOURCE_DIR}/extern/glbinding/source/glbinding/include
+    ${PROJECT_SOURCE_DIR}/extern/physfs/src
 )
 
 # Compile GLFW
@@ -32,9 +33,12 @@ add_subdirectory ("extern/cppformat")
 # Compile glbinding
 add_subdirectory ("extern/glbinding")
 
+# Compile PhysFS
+add_subdirectory ("extern/physfs")
+
 add_definitions(-DGLFW_INCLUDE_NONE)
 
 add_executable(EngineMk1 "src/main.cxx")
-target_link_libraries (EngineMk1 cppformat glfw ${GLFW_LIBRARIES} glbinding)
+target_link_libraries (EngineMk1 cppformat glfw ${GLFW_LIBRARIES} glbinding physfs)
 
 target_compile_features(EngineMk1 PRIVATE cxx_enum_forward_declarations)

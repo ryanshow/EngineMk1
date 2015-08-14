@@ -1,11 +1,11 @@
 #include <chrono>
 #include <thread>
-#include <type_traits>
 #include "format.h"
 #include "GLFW/glfw3.h"
 #include "config.h"
 #include "glbinding/gl/gl.h"
 #include "glbinding/Binding.h"
+#include "physfs.h"
 
 using namespace gl;
 
@@ -36,12 +36,19 @@ int main(int argc, char *argv[]) {
 		exit(EXIT_FAILURE);
 	}
 	glfwSetKeyCallback(window, glfw_key_callback);
+    glfwSetFramebufferSizeCallback(window, glfw_framebuffer_size_callback);
 
 	/*
 	* Initialize glBinding to create the OpenGL context and make it the context for the window
 	*/
 	glbinding::Binding::initialize();
 	glfwMakeContextCurrent(window);
+    
+    /*
+    * Initialize PhysicsFS
+    */
+    PHYSFS_init(argv[0]);
+    PHYSFS_setSaneConfig("ryanshow", "EngineMk1", "ZIP", 0, 1);
 
 	/*
 	* Main game loop
@@ -54,10 +61,12 @@ int main(int argc, char *argv[]) {
 	}
 
 	/*
-	* Tear down GLFW
+	* Tear down everything
 	*/
 	glfwDestroyWindow(window);
 	glfwTerminate();
+    PHYSFS_deinit();
+    
 	return 0;
 }
 
