@@ -3,7 +3,7 @@
 *glbinding* is a generated, cross-platform C++ binding for OpenGL which is solely based on the new xml-based OpenGL API specification ([gl.xml](https://cvs.khronos.org/svn/repos/ogl/trunk/doc/registry/public/api/gl.xml)). It is a fully fledged OpenGL API binding compatible with current code based on other C bindings, e.g., [GLEW](http://glew.sourceforge.net/). The binding is generated using python scripts and templates, that can be easily adapted to fit custom needs.
 *glbinding* can be used as an alternative to GLEW and other projects, e.g., [glad](https://github.com/Dav1dde/glad), [gl3w](https://github.com/skaslev/gl3w), [glLoadGen](https://bitbucket.org/alfonse/glloadgen/overview), [glload](http://glsdk.sourceforge.net/docs/html/group__module__glload.html), and [flextGL](https://github.com/ginkgo/flextGL). *glbinding* is licenced under the [MIT license](http://opensource.org/licenses/MIT)
 
-The current release is [glbinding-1.0.5](https://github.com/hpicgs/glbinding/releases/tag/v1.0.5).
+The current release is [glbinding-1.1.0](https://github.com/hpicgs/glbinding/releases/tag/v1.1.0).
 
 *glbinding* leverages modern C++11 features like enum classes, lambdas, and variadic templates, instead of relying on macros (all OpenGL symbols are real functions and variables). It provides [type-safe parameters](#type-safe-parameters), [per feature API header](#per-feature-api-header), [lazy function resolution](#lazy-function-pointer-resolution), [multi-context](#multi-context-support) and [multi-thread](#multi-threading-support) support, [global](#function-callbacks) function callbacks, [meta information](#meta-information) about the generated OpenGL binding and the OpenGL runtime, as well as multiple [tools](https://github.com/hpicgs/glbinding/wiki/tools) and [examples](https://github.com/hpicgs/glbinding/wiki/examples) for quick-starting your projects. 
 
@@ -223,7 +223,7 @@ Binding::addContextSwitchCallback([](ContextHandle handle) {
 
 ##### Meta Information
 
-Besides an actual OpenGL binding, *glbinding* also supports queries for both compile time and compile time information about the gl.xml and your OpenGL driver.
+Besides an actual OpenGL binding, *glbinding* also supports queries for both compile time and run time information about the gl.xml and your OpenGL driver.
 Typical use cases are querying the available OpenGL extensions or the associated extensions to an OpenGL feature and their functions and enums.
 
 Example list of all available OpenGL versions/features (compile time):
@@ -307,4 +307,4 @@ When configuring *glbinding*, the options ```OPTION_BUILD_EXAMPLES```, ```OPTION
 
 ##### Linking binaries
 
-In order to link *glbinding* the *glbinding* path can be added to the ```CMAKE_PREFIX_PATH``` and ```find_package(glbinding REQUIRED)``` can be used in the appropriate ```CMakeLists.txt```. ```GLBINDING_INCLUDES``` and ```GLBINDING_LIBRARIES``` can then be added to include dirs and target libraries.
+In order to link *glbinding* the *glbinding* path can be added to the ```CMAKE_PREFIX_PATH``` and ```find_package(glbinding REQUIRED)``` can be used in the appropriate ```CMakeLists.txt```. ```GLBINDING_INCLUDE_DIRS``` and ```GLBINDING_LIBRARIES``` can then be added to include dirs and target libraries.
