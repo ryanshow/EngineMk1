@@ -22,7 +22,7 @@ int main(int argc, char *argv[]) {
         exit(EXIT_FAILURE);
     }
     GLFWwindow *window = glfwCreateWindow(
-        640, 480,                             // width/height
+        1920, 1080,                           // width/height
         fmt::format("EngineMk1 v{}.{}.{}",    // title 
             EngineMk1_VERSION_MAJOR, 
             EngineMk1_VERSION_MINOR, 

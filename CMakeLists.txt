@@ -28,6 +28,8 @@ SET(GLFW_INSTALL OFF CACHE BOOL "Generate installation target")
 add_subdirectory (extern/glfw)
 
 # Compile cppformat
+SET(FMT_DOCS OFF CACHE BOOL "Generate doxygen documentation.")
+SET(FMT_TESTS OFF CACHE BOOL "Generate tests.")
 add_subdirectory ("extern/cppformat")
 
 # Compile glbinding
@@ -39,6 +41,6 @@ add_subdirectory ("extern/physfs")
 add_definitions(-DGLFW_INCLUDE_NONE)
 
 add_executable(EngineMk1 "src/main.cxx")
-target_link_libraries (EngineMk1 cppformat glfw ${GLFW_LIBRARIES} glbinding physfs)
+target_link_libraries (EngineMk1 cppformat glfw ${GLFW_LIBRARIES} glbinding physfs-static)
 
 target_compile_features(EngineMk1 PRIVATE cxx_enum_forward_declarations)
